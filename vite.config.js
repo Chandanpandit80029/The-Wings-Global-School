@@ -5,6 +5,10 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // IMPORTANT: Set base path for GitHub Pages deployment
+  // This tells Vite where your app will be hosted
+  base: '/The-Wings-Global-School/',
+  
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -18,5 +22,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    // Ensure assets are loaded relative to the base path
+    assetsDir: 'assets',
   },
 })

@@ -1,5 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+
+// Base path for GitHub Pages deployment
+const basename = '/The-Wings-Global-School'
 import { Toaster } from '@/components/ui/Toast'
 import { ToastProvider, ToastViewport } from '@/components/ui/Toast'
 import { AuthProvider } from '@/context/AuthContext'
@@ -54,7 +57,7 @@ function App() {
   return (
     <ToastWrapper>
       <AuthProvider>
-        <Router>
+        <Router basename={basename}>
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
