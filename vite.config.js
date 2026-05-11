@@ -5,8 +5,8 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // IMPORTANT: Use root base path in development and GitHub Pages base path in production
-  base: process.env.NODE_ENV === 'production' ? '/The-Wings-Global-School/' : '/',
+  // Use root base path for Render deployment
+  base: '/',
   
   plugins: [react(), tailwindcss()],
   resolve: {

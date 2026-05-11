@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
-// Base path for GitHub Pages deployment
-const basename = import.meta.env.MODE === 'production' ? '/The-Wings-Global-School' : '/'
+// Base path for deployment
+const basename = '/'
 import { Toaster } from '@/components/ui/Toast'
 import { ToastProvider, ToastViewport } from '@/components/ui/Toast'
 import { AuthProvider } from '@/context/AuthContext'

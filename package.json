@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lab942004.github.io/The-Wings-Global-School/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
