@@ -154,7 +154,25 @@ Click "Start collection" for each of the following:
   }
   ```
 
-#### 8. admissions Collection
+#### 8. heroSlider Collection
+- **Collection ID:** `heroSlider`
+- **Document ID:** Auto-ID
+- **Fields:**
+  ```json
+  {
+    "title": "Welcome to Wings Global School",
+    "subtitle": "Empowering minds, shaping futures",
+    "buttonText": "Apply Now",
+    "buttonLink": "/admissions",
+    "imageUrl": "https://example.com/hero-image.jpg",
+    "isActive": true,
+    "order": 1,
+    "createdAt": "[timestamp]",
+    "updatedAt": "[timestamp]"
+  }
+  ```
+
+#### 9. admissions Collection
 - **Collection ID:** `admissions`
 - **Document ID:** Auto-ID
 - **Fields:**
@@ -213,7 +231,7 @@ After creating collections, verify they exist:
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Select your project
 3. Go to **Firestore Database**
-4. You should see all 9 collections listed
+4. You should see all 10 collections listed
 
 ## Deploying Security Rules
 

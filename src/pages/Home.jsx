@@ -13,12 +13,15 @@ import {
 import { Button } from '@/components/ui/Button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Skeleton } from '@/components/ui/Skeleton'
+import HeroSlider from '@/components/HeroSlider'
 import {
   announcementService,
   eventService,
   newsService,
   galleryService,
   facultyService,
+  heroSliderService,
+  sliderService,
 } from '@/services/firestore'
 import { formatDate, truncateText } from '@/lib/utils'
 
@@ -58,23 +61,35 @@ export default function Home() {
   const [news, setNews] = useState([])
   const [gallery, setGallery] = useState([])
   const [faculty, setFaculty] = useState([])
+  const [heroSlides, setHeroSlides] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [announcementsData, eventsData, newsData, galleryData, facultyData] = await Promise.all([
+        const [announcementsData, eventsData, newsData, galleryData, facultyData, activeSlides, sliderSlides] = await Promise.all([
           announcementService.getLatest(3),
           eventService.getAll(),
           newsService.getLatest(3),
           galleryService.getAll(),
           facultyService.getAll(),
+          heroSliderService.getActiveSlides(),
+          sliderService.getAll(),
         ])
+
+        const filteredSliderSlides = sliderSlides
+          .filter((slide) => slide.isActive === true)
+          .map((slide) => ({
+            ...slide,
+            subtitle: slide.subtitle || slide.description || '',
+          }))
+
         setAnnouncements(announcementsData)
         setEvents(eventsData.slice(0, 3))
         setNews(newsData)
         setGallery(galleryData.slice(0, 6))
         setFaculty(facultyData.slice(0, 4))
+        setHeroSlides([...activeSlides, ...filteredSliderSlides])
       } catch (error) {
         console.error('Error loading home data:', error)
       } finally {
@@ -88,7 +103,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="min-h-screen">
-        <div className="h-[600px] bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+        <div className="h-150 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
           <Skeleton className="w-full h-full" />
         </div>
       </div>
@@ -97,69 +112,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-secondary" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1')] bg-cover bg-center opacity-20" />
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
-          >
-            Wings Global School
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto"
-          >
-            Empowering Minds, Shaping Futures — Where Excellence Meets Innovation
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button size="lg" asChild className="bg-white text-primary hover:bg-gray-100">
-              <Link to="/admissions">
-                Apply Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="border-white text-white hover:bg-white/10"
-            >
-              <Link to="/about">
-                Learn More
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1.5 h-3 bg-white rounded-full mt-2"
-            />
-          </div>
-        </motion.div>
-      </section>
+      {heroSlides.length > 0 && <HeroSlider slides={heroSlides} />}
 
       {/* Stats Section */}
       <section className="py-16 bg-white">
@@ -396,7 +349,7 @@ export default function Home() {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-20 bg-linear-to-r from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Join Wings Global?
@@ -412,9 +365,9 @@ export default function Home() {
               </Link>
             </Button>
             <Button
-              variant="outline"
+              variant="secondary"
               size="lg"
-              className="border-white text-white hover:bg-white/10"
+              className="border-white text-gray-900 hover:bg-white/10"
               asChild
             >
               <Link to="/contact">Contact Us</Link>

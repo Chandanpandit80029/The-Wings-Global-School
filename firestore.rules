@@ -55,6 +55,18 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
+    // Slider - public read, admin write
+    match /slider/{slideId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Hero Slider - public read, admin write
+    match /heroSlider/{slideId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
     // Admissions - admin read/write, public create (for form submissions)
     match /admissions/{admissionId} {
       allow read, update, delete: if isAdmin();

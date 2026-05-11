@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
 // Base path for GitHub Pages deployment
-const basename = '/The-Wings-Global-School'
+const basename = import.meta.env.MODE === 'production' ? '/The-Wings-Global-School' : '/'
 import { Toaster } from '@/components/ui/Toast'
 import { ToastProvider, ToastViewport } from '@/components/ui/Toast'
 import { AuthProvider } from '@/context/AuthContext'
@@ -31,6 +31,8 @@ import Login from '@/pages/admin/Login'
 import Dashboard from '@/pages/admin/Dashboard'
 import CRUDPage from '@/pages/admin/CRUDPage'
 import SubmissionsPage from '@/pages/admin/SubmissionsPage'
+import AdminHeroSlider from '@/pages/admin/AdminHeroSlider'
+import SliderManagement from '@/pages/admin/SliderManagement'
 
 // Layout wrapper for public pages
 function PublicLayout({ children }) {
@@ -110,6 +112,9 @@ function App() {
               <Route path="downloads" element={<CRUDPage collection="downloads" />} />
               <Route path="downloads/:action" element={<CRUDPage collection="downloads" />} />
               <Route path="downloads/:action/:id" element={<CRUDPage collection="downloads" />} />
+
+              <Route path="slider" element={<SliderManagement />} />
+              <Route path="hero-slider" element={<AdminHeroSlider />} />
 
               {/* Submissions Routes */}
               <Route path="admissions" element={<SubmissionsPage type="admissions" />} />

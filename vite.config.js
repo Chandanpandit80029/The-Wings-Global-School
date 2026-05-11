@@ -5,9 +5,8 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // IMPORTANT: Set base path for GitHub Pages deployment
-  // This tells Vite where your app will be hosted
-  base: '/The-Wings-Global-School/',
+  // IMPORTANT: Use root base path in development and GitHub Pages base path in production
+  base: process.env.NODE_ENV === 'production' ? '/The-Wings-Global-School/' : '/',
   
   plugins: [react(), tailwindcss()],
   resolve: {

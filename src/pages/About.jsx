@@ -100,7 +100,7 @@ export default function About() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Journey</h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Founded in 1999, Wings Global School began with a vision to provide quality education that nurtures both academic excellence and character development. What started as a small institution with just 50 students has grown into a premier educational establishment serving over 2,500 students.
+                  Founded in 2014, Wings Global School began with a vision to provide quality education that nurtures both academic excellence and character development. What started as a small institution with just 50 students has grown into a premier educational establishment serving over 2,500 students.
                 </p>
                 <p>
                   Over the years, we have consistently evolved our curriculum and teaching methodologies to meet the changing needs of education while staying true to our core values. Our commitment to innovation and excellence has earned us recognition as one of the leading schools in the region.

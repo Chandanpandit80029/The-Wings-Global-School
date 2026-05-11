@@ -25,6 +25,8 @@ const navigation = [
   { name: 'Announcements', href: '/admin/announcements', icon: Megaphone },
   { name: 'News', href: '/admin/news', icon: Newspaper },
   { name: 'Events', href: '/admin/events', icon: Calendar },
+  { name: 'Hero Slider', href: '/admin/hero-slider', icon: Image },
+  { name: 'Slider', href: '/admin/slider', icon: Image },
   { name: 'Faculty', href: '/admin/faculty', icon: Users },
   { name: 'Gallery', href: '/admin/gallery', icon: Image },
   { name: 'Downloads', href: '/admin/downloads', icon: Download },

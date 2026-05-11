@@ -5,7 +5,7 @@ A production-grade, scalable, full-stack school management platform built with R
 ## 🌟 Features
 
 ### Public Website (11 Pages)
-- **Home** - Dynamic hero banner, announcements ticker, featured content, stats, gallery preview
+- **Home** - Full-width hero slider, announcements ticker, featured content, stats, gallery preview
 - **About** - School mission, vision, core values, and history
 - **Academics** - Programs (Pre-K to Grade 12), curriculum, and facilities
 - **Faculty** - Searchable faculty directory with subject filters
@@ -19,6 +19,7 @@ A production-grade, scalable, full-stack school management platform built with R
 
 ### Admin Dashboard
 - **Dashboard** - Overview with statistics and recent activity
+- **Hero Slider** - Manage homepage hero slides with image upload, title, subtitle, CTA, order, and visibility
 - **Full CRUD** for:
   - Announcements
   - News Articles
@@ -218,6 +219,7 @@ The application uses strict Firestore security rules (see `firestore.rules`):
 | faculty | Faculty profiles | Public read, Admin write |
 | gallery | Photos/videos | Public read, Admin write |
 | downloads | Downloadable files | Public read, Admin write |
+| heroSlider | Homepage hero slides | Public read, Admin write |
 | admissions | Admission applications | Public create, Admin read |
 | messages | Contact messages | Public create, Admin read |
 
@@ -244,6 +246,7 @@ All content is dynamically loaded from Firebase. Use the admin dashboard to mana
 - Faculty profiles
 - Gallery items
 - Downloads
+- Hero slider slides
 
 ## 📄 Environment Variables (Optional)
 
@@ -288,6 +291,7 @@ VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 - `/admin/faculty` - Faculty CRUD
 - `/admin/gallery` - Gallery CRUD
 - `/admin/downloads` - Downloads CRUD
+- `/admin/hero-slider` - Hero Slider management
 - `/admin/admissions` - Admission Submissions
 - `/admin/messages` - Contact Messages
 

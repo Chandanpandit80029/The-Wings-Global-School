@@ -1,9 +1,29 @@
 import axios from 'axios'
 
 // Cloudinary Configuration
-const CLOUDINARY_CLOUD_NAME = 'dmmznl5hy'
-const CLOUDINARY_API_KEY = '497945914758626'
-const CLOUDINARY_UPLOAD_PRESET = 'wing-global'
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+const CLOUDINARY_API_KEY = import.meta.env.VITE_CLOUDINARY_API_KEY
+const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+
+// Test upload preset existence
+export const testUploadPreset = async () => {
+  try {
+    // Try to upload a small test image to check if preset works
+    const testFormData = new FormData()
+    testFormData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    testFormData.append('folder', 'test')
+
+    const response = await axios.post(
+      `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`,
+      testFormData,
+      { timeout: 5000 }
+    )
+    return { success: true, data: response.data }
+  } catch (error) {
+    console.error('Upload preset test failed:', error.response?.data || error.message)
+    return { success: false, error: error.response?.data || error.message }
+  }
+}
 
 // Folder structure for organization
 export const CLOUDINARY_FOLDERS = {
@@ -43,8 +63,13 @@ export const getFolderForFile = (fileType, customFolder) => {
 
 // Upload file to Cloudinary
 export const uploadToCloudinary = async (file, folder = null, onProgress = null) => {
-  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
+  if (!CLOUDINARY_CLOUD_NAME) {
     throw new Error('Cloudinary is not configured. Please set up environment variables.')
+  }
+
+  // Validate file
+  if (!file || !file.type) {
+    throw new Error('Invalid file provided')
   }
 
   const formData = new FormData()
@@ -55,6 +80,14 @@ export const uploadToCloudinary = async (file, folder = null, onProgress = null)
   // Add tags for better organization
   formData.append('tags', 'wings-global-school')
 
+  console.log('Uploading to Cloudinary:', {
+    cloudName: CLOUDINARY_CLOUD_NAME,
+    preset: CLOUDINARY_UPLOAD_PRESET,
+    folder: getFolderForFile(getFileType(file), folder),
+    fileType: file.type,
+    fileSize: file.size
+  })
+
   try {
     const response = await axios.post(
       `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`,
@@ -63,6 +96,7 @@ export const uploadToCloudinary = async (file, folder = null, onProgress = null)
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        timeout: 30000, // 30 second timeout
         onUploadProgress: (progressEvent) => {
           if (onProgress) {
             const percentCompleted = Math.round(
@@ -73,6 +107,8 @@ export const uploadToCloudinary = async (file, folder = null, onProgress = null)
         },
       }
     )
+
+    console.log('Cloudinary upload success:', response.data)
 
     return {
       url: response.data.secure_url,
@@ -85,6 +121,7 @@ export const uploadToCloudinary = async (file, folder = null, onProgress = null)
     }
   } catch (error) {
     console.error('Cloudinary upload error:', error)
+    console.error('Error response:', error.response?.data)
     throw new Error(`Failed to upload file: ${error.message}`)
   }
 }

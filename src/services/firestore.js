@@ -25,6 +25,8 @@ export const COLLECTIONS = {
   FACULTY: 'faculty',
   GALLERY: 'gallery',
   DOWNLOADS: 'downloads',
+  SLIDER: 'slider',
+  HERO_SLIDER: 'heroSlider',
   ADMISSIONS: 'admissions',
   MESSAGES: 'messages',
 }
@@ -108,13 +110,22 @@ export const getCollection = async (
   }
 }
 
-export const getCollectionWithFilter = async (collectionName, filters) => {
+export const getCollectionWithFilter = async (
+  collectionName,
+  filters,
+  orderByField = 'createdAt',
+  orderDirection = 'asc'
+) => {
   try {
     let q = query(collection(db, collectionName))
-    
+
     filters.forEach((filter) => {
       q = query(q, where(filter.field, filter.operator, filter.value))
     })
+
+    if (orderByField) {
+      q = query(q, orderBy(orderByField, orderDirection))
+    }
 
     const querySnapshot = await getDocs(q)
     return querySnapshot.docs.map((doc) => ({
@@ -128,6 +139,38 @@ export const getCollectionWithFilter = async (collectionName, filters) => {
 }
 
 // Specific collection services
+
+// Slider
+export const sliderService = {
+  getActiveSlides: () =>
+    getCollectionWithFilter(
+      COLLECTIONS.SLIDER,
+      [{ field: 'isActive', operator: '==', value: true }],
+      'createdAt',
+      'asc'
+    ),
+  getAll: () => getCollection(COLLECTIONS.SLIDER, { orderByField: 'createdAt', orderDirection: 'asc' }),
+  getById: (id) => getDocument(COLLECTIONS.SLIDER, id),
+  create: (data) => createDocument(COLLECTIONS.SLIDER, data),
+  update: (id, data) => updateDocument(COLLECTIONS.SLIDER, id, data),
+  delete: (id) => deleteDocument(COLLECTIONS.SLIDER, id),
+}
+
+// Hero slider
+export const heroSliderService = {
+  getActiveSlides: async () => {
+    const slides = await getCollection(COLLECTIONS.HERO_SLIDER, {
+      orderByField: 'order',
+      orderDirection: 'asc',
+    })
+    return slides.filter((slide) => slide.isActive === true)
+  },
+  getAll: () => getCollection(COLLECTIONS.HERO_SLIDER, { orderByField: 'order', orderDirection: 'asc' }),
+  getById: (id) => getDocument(COLLECTIONS.HERO_SLIDER, id),
+  create: (data) => createDocument(COLLECTIONS.HERO_SLIDER, data),
+  update: (id, data) => updateDocument(COLLECTIONS.HERO_SLIDER, id, data),
+  delete: (id) => deleteDocument(COLLECTIONS.HERO_SLIDER, id),
+}
 
 // Announcements
 export const announcementService = {
@@ -267,6 +310,8 @@ export default {
   facultyService,
   galleryService,
   downloadService,
+  sliderService,
+  heroSliderService,
   admissionService,
   messageService,
   userService,
