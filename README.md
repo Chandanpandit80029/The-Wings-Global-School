@@ -86,17 +86,6 @@ npm install
 
 The Firebase configuration is already set up in `src/config/firebase.js`:
 
-```javascript
-const firebaseConfig = {
-  apiKey: "AIzaSyDf_xiuaaFLE7ETuZzlxI85LWh--ZIjCDk",
-  authDomain: "wings-global-school.firebaseapp.com",
-  projectId: "wings-global-school",
-  storageBucket: "wings-global-school.firebasestorage.app",
-  messagingSenderId: "166356429401",
-  appId: "1:166356429401:web:a3896881765528b4e05f48",
-  measurementId: "G-7ZYZ4LJP9P"
-}
-```
 
 To set up your Firebase project:
 
@@ -113,11 +102,6 @@ To set up your Firebase project:
 
 The Cloudinary configuration is already set up in `src/config/cloudinary.js`:
 
-```javascript
-const CLOUDINARY_CLOUD_NAME = 'dmmznl5hy'
-const CLOUDINARY_API_KEY = '497945914758626'
-const CLOUDINARY_UPLOAD_PRESET = 'wing-global'
-```
 
 To configure your Cloudinary account:
 
