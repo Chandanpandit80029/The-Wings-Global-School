@@ -1,8 +1,21 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
-// Base path for deployment
-const basename = '/'
+// Detect deployment environment and set basename accordingly
+// GitHub Pages: /repository-name/
+// Vercel, Netlify, others: /
+// Production: use VITE_BASE_PATH from environment
+const getBasename = () => {
+  // Check for environment variable (useful for GitHub Pages)
+  if (import.meta.env.VITE_BASE_PATH) {
+    return import.meta.env.VITE_BASE_PATH
+  }
+  
+  // Default to root for most deployment platforms
+  return '/'
+}
+
+const basename = getBasename()
 import { Toaster } from '@/components/ui/Toast'
 import { ToastProvider, ToastViewport } from '@/components/ui/Toast'
 import { AuthProvider } from '@/context/AuthContext'

@@ -11,11 +11,18 @@ node_modules
 dist
 dist-ssr
 *.local
-*.env
-.env.*
 coverage/
 .cache/
 *.tgz
+
+# Environment files
+.env
+.env.*.local
+!.env.example
+!.env.github-pages
+
+# Build outputs
+.gh-pages
 
 # Editor directories and files
 .vscode/*
@@ -27,4 +34,3 @@ coverage/
 *.njsproj
 *.sln
 *.sw?
-.env
