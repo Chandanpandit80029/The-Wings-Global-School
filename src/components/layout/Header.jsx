@@ -58,10 +58,10 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 md:space-x-3">
-            <img src={logo} alt="Wings Global" className="h-10 w-auto md:h-12" />
+            <img src={logo} alt="ABC" className="h-10 w-auto md:h-12" />
             <div className="hidden sm:block">
               <span className="text-lg md:text-xl font-bold text-gray-900">
-                Wings Global
+                ABC
               </span>
               <span className="block text-xs text-gray-500">School</span>
             </div>
