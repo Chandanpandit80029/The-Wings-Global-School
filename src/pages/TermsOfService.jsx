@@ -7,7 +7,7 @@ const sections = [
   {
     icon: FileText,
     title: 'Acceptance of Terms',
-    content: `By accessing and using the Wings Global School website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.`,
+    content: `By accessing and using ABC School website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.`,
   },
   {
     icon: Users,
@@ -19,9 +19,9 @@ You are responsible for safeguarding the password that you use to access the Ser
   {
     icon: Scale,
     title: 'Intellectual Property',
-    content: `The Service and its original content (excluding Content provided by users), features, and functionality are and will remain the exclusive property of Wings Global School. The Service is protected by copyright, trademark, and other laws of both the country and foreign countries.
+    content: `The Service and its original content (excluding Content provided by users), features, and functionality are and will remain the exclusive property of ABC School. The Service is protected by copyright, trademark, and other laws of both the country and foreign countries.
 
-Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Wings Global School.`,
+Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of ABC School.`,
   },
   {
     icon: AlertTriangle,
@@ -37,7 +37,7 @@ Our trademarks and trade dress may not be used in connection with any product or
   {
     icon: CheckCircle,
     title: 'Limitation of Liability',
-    content: `In no event shall Wings Global School, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.`,
+    content: `In no event shall ABC School, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.`,
   },
 ]
 
@@ -58,7 +58,7 @@ export default function TermsOfService() {
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 mb-8">
               Please read these Terms of Service carefully before using the service operated by 
-              Wings Global School. These terms govern your use of our website, applications, 
+              ABC School. These terms govern your use of our website, applications, 
               and any related services.
             </p>
 
@@ -122,7 +122,7 @@ export default function TermsOfService() {
                 <CardContent>
                   <p className="text-gray-600">
                     These Terms shall be governed and construed in accordance with the laws of the jurisdiction 
-                    in which Wings Global School operates, without regard to its conflict of law provisions.
+                    in which ABC School operates, without regard to its conflict of law provisions.
                   </p>
                 </CardContent>
               </Card>
