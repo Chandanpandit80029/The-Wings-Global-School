@@ -108,7 +108,7 @@ export default function Contact() {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h2>
                 <p className="text-gray-600">
-                  Have a question or want to learn more about Wings Global School? 
+                  Have a question or want to learn more about ABC School? 
                   We're here to help. Reach out to us through any of the channels below 
                   or fill out the contact form.
                 </p>
