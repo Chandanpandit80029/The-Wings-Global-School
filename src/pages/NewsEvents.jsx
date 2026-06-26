@@ -52,7 +52,7 @@ export default function NewsEvents() {
         <div className="text-center text-white px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">News & Events</h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Stay updated with the latest happenings at Wings Global
+            Stay updated with the latest happenings at ABC
           </p>
         </div>
       </section>
