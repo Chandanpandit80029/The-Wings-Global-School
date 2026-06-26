@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 mb-8">
-              Wings Global School ("we," "our," or "us") is committed to protecting your privacy. 
+              ABC School ("we," "our," or "us") is committed to protecting your privacy. 
               This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
               when you visit our website or use our services.
             </p>
