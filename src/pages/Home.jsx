@@ -172,7 +172,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Wings Global?
+              Why Choose ABC?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We provide a nurturing environment that fosters academic excellence and personal growth.
@@ -352,7 +352,7 @@ export default function Home() {
       <section className="py-20 bg-linear-to-r from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Join Wings Global?
+            Ready to Join ABC?
           </h2>
           <p className="text-xl text-white/90 mb-8">
             Admissions are now open for the upcoming academic year. Give your child the gift of quality education.
