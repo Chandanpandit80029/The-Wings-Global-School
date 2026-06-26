@@ -53,7 +53,7 @@ export default function Login() {
                 <GraduationCap className="w-10 h-10 text-white" />
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold">Wings Global School</CardTitle>
+            <CardTitle className="text-2xl font-bold">ABC School</CardTitle>
             <CardDescription>
               Admin Portal - Sign in to continue
             </CardDescription>
@@ -159,7 +159,7 @@ export default function Login() {
         </Card>
 
         <p className="text-center text-sm text-gray-500 mt-6">
-          © {new Date().getFullYear()} Wings Global School. All rights reserved.
+          © {new Date().getFullYear()} ABC School. All rights reserved.
         </p>
       </motion.div>
     </div>
