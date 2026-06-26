@@ -267,7 +267,7 @@ export default function AdminHeroSlider() {
                     id="title"
                     value={form.title}
                     onChange={setField('title')}
-                    placeholder="Welcome to Wings Global"
+                    placeholder="Welcome to ABC"
                   />
                 </div>
                 <div className="space-y-2">
