@@ -36,8 +36,8 @@ export default function Footer() {
           {/* School Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
-              <img src={logo} alt="Wings Global" className="h-10 w-auto" />
-              <span className="text-xl font-bold text-white">Wings Global</span>
+              <img src={logo} alt="ABC" className="h-10 w-auto" />
+              <span className="text-xl font-bold text-white">ABC</span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Empowering minds, shaping futures. Wings Global School is committed to providing excellence in education and nurturing well-rounded individuals.
@@ -125,7 +125,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Wings Global School. All rights reserved.
+              © {new Date().getFullYear()} ABC School. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link to="/privacy-policy" className="text-sm text-gray-500 hover:text-white transition-colors">
