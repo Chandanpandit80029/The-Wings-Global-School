@@ -99,7 +99,7 @@ export default function Admissions() {
         <div className="text-center text-white px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Admissions</h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Join the Wings Global community and give your child the gift of excellence
+            Join the ABC community and give your child the gift of excellence
           </p>
         </div>
       </section>
