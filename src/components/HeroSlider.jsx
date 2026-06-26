@@ -107,7 +107,7 @@ export default function HeroSlider({ slides = [] }) {
               <div className="max-w-3xl text-left text-white">
                 <p className="mb-4 text-sm uppercase tracking-[0.32em] text-slate-300">Hero slider</p>
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-                  Welcome to The Wings Global School
+                  Welcome to ABC School
                 </h1>
                 <p className="mt-6 max-w-xl text-base text-slate-200 sm:text-lg lg:text-xl">
                   where young minds grow, dreams take flight, and excellence becomes a habit.
